@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+    <!-- 方法一：使用 [class]="{ 剛剛在 .css 裡面的 class 名稱：後面的東西要去 .ts 檔宣告} -->
+    <!-- <a class="navbar-brand"
+    [class]="{ highlight : isHighlight }" href="index.html">conduit</a> -->
+    <!-- 方法二：直接把 .css 名字放入，[class.CSS名字]=".ts宣告的"-->
+    <!-- <a class="navbar-brand"
+    [class.highlight]="isHighlight"
+    [style]="{ 'font-size': fontSize + 'px'}"
+    href="index.html">conduit</a> -->
+    <!-- 方法一：[style]= 放一個物件，但因為 font-size 有 - 所以要包起來： .ts 宣告的東西（fontSize) + 'px' -->
+    <!-- <a class="navbar-brand"
+    [class.highlight]="isHighlight"
+    [style]="{ 'font-size': fontSize + 'px'}"
+    href="index.html">conduit</a> -->
+    <!-- 方法二：[style.font-size.單位]="ts 宣告的東西" -->
+    <a class="navbar-brand"
+    [class.highlight]="isHighlight"
+    [style.font-size.px]="fontSize"
+    href="index.html">conduit</a>
+    <input
+    [(ngModel)]="keyword" class="form-control form-control-sm search-input" type="text" placeholder="Keyword">
+    <button class="btn btn-sm btn-primary"  (click)="doSearch($event)">
+      <i class="ion-search"></i>
+    </button>
+    <!-- 如果搜尋匡內沒有文字，才會出現 "請輸入查詢條件" -->
+    <span *ngIf="!keyword" class="highlight">請輸入查詢條件</span>
+    <!-- {{ keyword }} -->
+  </div>
+</nav>
